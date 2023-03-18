@@ -1,0 +1,15 @@
+html, body {
+  @apply h-full;
+}
+
+body {
+  @apply m-0;
+}
+
+* {
+  @apply font-sans #{!important};
+}
+
+h1 {
+  @apply text-2xl;
+}

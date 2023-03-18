@@ -1,0 +1,14 @@
+<section class="px-4">
+  <h2>Fixtures</h2>
+  <mat-form-field [appearance]="'fill'">
+    <mat-label>Month and Year</mat-label>
+    <input matInput [matDatepicker]="monthPicker" [formControl]="chosenDate">
+    <mat-hint>MM/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="monthPicker"></mat-datepicker-toggle>
+    <mat-datepicker #monthPicker
+                    startView="multi-year"
+                    (monthSelected)="setMonthAndYear($event, monthPicker)"
+                    panelClass="example-month-picker">
+    </mat-datepicker>
+  </mat-form-field>
+</section>
