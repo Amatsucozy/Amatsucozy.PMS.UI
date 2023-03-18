@@ -1,7 +1,13 @@
 <mat-toolbar [color]="'primary'">
   <section class="w-full flex justify-between items-center">
     <h1>PTN Global FC</h1>
-    <button mat-raised-button (click)="login()">Login</button>
+    <ng-container [ngSwitch]="isAuthenticated | async">
+      <button *ngSwitchCase="false" mat-raised-button (click)="login()">Login</button>
+      <button *ngSwitchCase="true" mat-raised-button (click)="toSecuredView()">To secured views</button>
+      <button *ngSwitchDefault mat-raised-button [disabled]="true">
+        <mat-spinner [diameter]="25" [color]="'accent'"></mat-spinner>
+      </button>
+    </ng-container>
   </section>
 </mat-toolbar>
 <router-outlet></router-outlet>

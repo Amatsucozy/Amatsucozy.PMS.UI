@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { AuthenticatedCallbackComponent } from './authenticated-callback.component';
+import {AuthenticatedCallbackComponent} from './authenticated-callback.component';
 
 describe('AuthenticatedCallbackComponent', () => {
   let component: AuthenticatedCallbackComponent;
@@ -8,9 +8,9 @@ describe('AuthenticatedCallbackComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AuthenticatedCallbackComponent ]
+      declarations: [AuthenticatedCallbackComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(AuthenticatedCallbackComponent);
     component = fixture.componentInstance;

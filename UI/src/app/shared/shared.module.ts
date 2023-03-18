@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import { AuthenticatedCallbackComponent } from './intermediaries/authenticated-callback/authenticated-callback.component';
+import {AuthenticatedCallbackComponent} from './intermediaries/authenticated-callback/authenticated-callback.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
