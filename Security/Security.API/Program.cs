@@ -1,25 +1,20 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using DuendeIdentityServerQuickstartUI1;
+using Security.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddRazorPages();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services
-    .AddAuthentication(options =>
-    {
-        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    })
-    .AddJwtBearer(options =>
-    {
-        var configSection = builder.Configuration.GetSection("Auth0");
-        options.Authority = configSection.GetValue<string>("Authority");
-        options.Audience = configSection.GetValue<string>("Audience");
-    });
+builder.Services.AddIdentityServer()
+    .AddInMemoryApiScopes(Config.ApiScopes)
+    .AddInMemoryClients(Config.Clients)
+    .AddTestUsers(TestUsers.Users);
+builder.Services.AddAuthorization();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("default", policyBuilder =>
@@ -40,8 +35,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseCors("default");
-app.UseAuthentication();
+app.UseStaticFiles();
+app.UseRouting();
+app.UseIdentityServer();
 app.UseAuthorization();
 app.MapControllers();
+app.MapRazorPages()
+    .RequireAuthorization();
 
 app.Run();
