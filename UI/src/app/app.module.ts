@@ -4,11 +4,12 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {AuthModule} from '@auth0/auth0-angular';
+import {AuthHttpInterceptor, AuthModule} from '@auth0/auth0-angular';
 import {environment} from "../environments/environment";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {AuthenticatedCallbackComponent} from "./pages/authenticated-callback/authenticated-callback.component";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -19,17 +20,38 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatMomentDateModule,
+    MatProgressSpinnerModule,
     AuthModule.forRoot({
       domain: environment.auth0Domain,
       clientId: environment.auth0ClientId,
       authorizationParams: {
-        redirect_uri: environment.auth0RedirectUri
+        audience: environment.apis.accounts,
+        redirect_uri: environment.auth0RedirectUri,
+      },
+      httpInterceptor: {
+        allowedList: [
+          {
+            uri: `${environment.apis.accounts}*`,
+            tokenOptions: {
+              authorizationParams: {
+                audience: environment.apis.accounts,
+                scope: ''
+              }
+            }
+          }
+        ]
       }
     }),
-    MatProgressSpinnerModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

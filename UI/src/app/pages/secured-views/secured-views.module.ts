@@ -5,6 +5,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {SecuredViewsRoutingModule} from "./secured-views-routing.module";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
+import {AccountsService} from "../../services/accounts.service";
 
 
 @NgModule({
@@ -17,6 +18,9 @@ import {MatButtonModule} from "@angular/material/button";
     MatSidenavModule,
     MatToolbarModule,
     MatButtonModule
+  ],
+  providers: [
+    AccountsService
   ]
 })
 export class SecuredViewsModule {

@@ -1,14 +1,15 @@
 using Accounts.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Accounts.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class UserController : ControllerBase
+public class AccountsController : ControllerBase
 {
-    [HttpPost]
-    public IActionResult LoggedIn(UserLoggedInDto userLoggedInDto)
+    [Authorize]
+    public IActionResult Get()
     {
         return Ok();
     }
