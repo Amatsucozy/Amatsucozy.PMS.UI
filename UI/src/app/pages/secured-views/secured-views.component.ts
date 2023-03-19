@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {AuthService} from "@auth0/auth0-angular";
 import {AccountsService} from "../../services/accounts.service";
+import {OidcSecurityService} from "angular-auth-oidc-client";
 
 @Component({
   selector: 'app-secured-views',
@@ -8,11 +8,11 @@ import {AccountsService} from "../../services/accounts.service";
   styleUrls: ['./secured-views.component.scss']
 })
 export class SecuredViewsComponent {
-  constructor(private authService: AuthService, private accountsService: AccountsService) {
-    this.accountsService.getAccount().subscribe();
+  constructor(private oidcSecurityService: OidcSecurityService, private accountsService: AccountsService) {
+    // this.accountsService.getAccount().subscribe();
   }
 
   logout() {
-    this.authService.logout();
+    this.oidcSecurityService.logoffAndRevokeTokens().subscribe();
   }
 }

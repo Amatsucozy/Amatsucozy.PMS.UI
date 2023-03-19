@@ -9,6 +9,7 @@ export const environment: IEnvironmentModel = {
   auth0RedirectUri: 'http://localhost:4200/challenge',
 
   apis: {
+    sts: 'https://amatsucozy.pms.com/security/',
     accounts: 'https://amatsucozy.pms.com/accounts/',
     pms: 'https://amatsucozy.pms.com/pms/'
   }
