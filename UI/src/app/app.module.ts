@@ -4,20 +4,21 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {SharedModule} from "./shared/shared.module";
 import {AuthModule} from '@auth0/auth0-angular';
 import {environment} from "../environments/environment";
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
+import {AuthenticatedCallbackComponent} from "./pages/authenticated-callback/authenticated-callback.component";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AuthenticatedCallbackComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    SharedModule,
     MatMomentDateModule,
     AuthModule.forRoot({
       domain: environment.auth0Domain,
@@ -26,6 +27,7 @@ import {MatMomentDateModule} from "@angular/material-moment-adapter";
         redirect_uri: environment.auth0RedirectUri
       }
     }),
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
