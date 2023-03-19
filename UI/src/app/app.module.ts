@@ -32,15 +32,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
       },
       httpInterceptor: {
         allowedList: [
-          {
-            uri: `${environment.apis.accounts}*`,
-            tokenOptions: {
-              authorizationParams: {
-                audience: environment.apis.accounts,
-                scope: ''
-              }
-            }
-          }
+          `${environment.apis.accounts}*`
         ]
       }
     }),

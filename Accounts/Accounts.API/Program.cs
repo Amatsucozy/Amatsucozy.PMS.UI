@@ -16,8 +16,9 @@ builder.Services
     })
     .AddJwtBearer(options =>
     {
-        options.Authority = "https://amatsucozy.jp.auth0.com/";
-        options.Audience = "https://localhost:50000/";
+        var configSection = builder.Configuration.GetSection("Auth0");
+        options.Authority = configSection.GetValue<string>("Authority");
+        options.Audience = configSection.GetValue<string>("Audience");
     });
 builder.Services.AddCors(options =>
 {
