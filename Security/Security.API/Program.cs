@@ -1,7 +1,9 @@
 using DuendeIdentityServerQuickstartUI1;
-using Security.Core;
+using Microsoft.EntityFrameworkCore;
+using Security.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("Default");
 
 // Add services to the container.
 
@@ -11,8 +13,20 @@ builder.Services.AddRazorPages();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddIdentityServer()
-    .AddInMemoryApiScopes(Config.ApiScopes)
-    .AddInMemoryClients(Config.Clients)
+    .AddConfigurationStore(options =>
+    {
+        options.ConfigureDbContext = dbOptions => dbOptions.UseNpgsql(connectionString, sqlBuilder =>
+        {
+            sqlBuilder.MigrationsAssembly(typeof(InfrastructureMarker).Assembly.GetName().Name);
+        });
+    })
+    .AddOperationalStore(options =>
+    {
+        options.ConfigureDbContext = dbOptions => dbOptions.UseNpgsql(connectionString, sqlBuilder =>
+        {
+            sqlBuilder.MigrationsAssembly(typeof(InfrastructureMarker).Assembly.GetName().Name);
+        });
+    })
     .AddTestUsers(TestUsers.Users);
 builder.Services.AddAuthorization();
 builder.Services.AddCors(options =>
@@ -33,6 +47,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.DbStart();
 app.UseHttpsRedirection();
 app.UseCors("default");
 app.UseStaticFiles();

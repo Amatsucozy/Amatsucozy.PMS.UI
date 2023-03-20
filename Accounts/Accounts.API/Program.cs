@@ -9,17 +9,23 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services
-    .AddAuthentication(options =>
-    {
-        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    })
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
-        var configSection = builder.Configuration.GetSection("Auth0");
+        var configSection = builder.Configuration.GetSection("IdentityServer");
         options.Authority = configSection.GetValue<string>("Authority");
-        options.Audience = configSection.GetValue<string>("Audience");
+        options.TokenValidationParameters.ValidateAudience = false;
+        options.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
     });
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("ApiScope", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+        policy.RequireClaim("scope", "accounts");
+    });
+    options.DefaultPolicy = options.GetPolicy("ApiScope")!;
+});
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("default", policyBuilder =>

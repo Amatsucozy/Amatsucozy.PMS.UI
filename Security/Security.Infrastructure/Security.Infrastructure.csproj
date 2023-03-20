@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <PackageReference Include="Duende.BFF.EntityFramework" Version="2.0.0" />
+      <PackageReference Include="Duende.IdentityServer.EntityFramework" Version="6.2.3" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.4" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.4">
         <PrivateAssets>all</PrivateAssets>
@@ -18,6 +19,11 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Security.Core\Security.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="IdentityServerMigrations\Configuration" />
+      <Folder Include="IdentityServerMigrations\PersistedGrant" />
     </ItemGroup>
 
 </Project>

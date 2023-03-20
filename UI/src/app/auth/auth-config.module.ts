@@ -9,7 +9,7 @@ import {AuthModule} from 'angular-auth-oidc-client';
       redirectUrl: window.location.origin,
       postLogoutRedirectUri: window.location.origin,
       clientId: 'pms-ui',
-      scope: 'openid profile ui sts accounts pms', // 'openid profile ' + your scopes
+      scope: 'openid profile sts accounts pms', // 'openid profile ' + your scopes
       responseType: 'code',
       silentRenew: true,
       silentRenewUrl: window.location.origin + '/silent-renew.html',

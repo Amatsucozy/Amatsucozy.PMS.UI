@@ -9,7 +9,7 @@ import {OidcSecurityService} from "angular-auth-oidc-client";
 })
 export class SecuredViewsComponent {
   constructor(private oidcSecurityService: OidcSecurityService, private accountsService: AccountsService) {
-    // this.accountsService.getAccount().subscribe();
+    this.accountsService.getAccount().subscribe();
   }
 
   logout() {

@@ -7,8 +7,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatMomentDateModule} from "@angular/material-moment-adapter";
 import {AuthenticatedCallbackComponent} from "./pages/authenticated-callback/authenticated-callback.component";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {HttpClientModule} from "@angular/common/http";
-import {AuthConfigModule} from './auth/auth-config.module';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AuthHttpInterceptor} from "./auth/auth-http.interceptor";
 
 @NgModule({
   declarations: [
@@ -21,10 +21,15 @@ import {AuthConfigModule} from './auth/auth-config.module';
     BrowserAnimationsModule,
     HttpClientModule,
     MatMomentDateModule,
-    MatProgressSpinnerModule,
-    AuthConfigModule,
+    MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
