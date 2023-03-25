@@ -32,4 +32,8 @@
         <Folder Include="Controllers" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="keys\is-signing-key-981325D448D7E336F342C8730ED7F5C0.json" />
+    </ItemGroup>
+
 </Project>
