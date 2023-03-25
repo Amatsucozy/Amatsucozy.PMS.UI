@@ -1,10 +1,15 @@
 name: SonarCloud
+
 on:
   push:
     branches:
       - main
+    paths:
+      - Security/**
   pull_request:
     types: [opened, synchronize, reopened]
+    paths:
+      - Security/**
 jobs:
   build:
     name: Build and analyze
