@@ -1,3 +1,4 @@
+using Amatsucozy.PMS.Shared.API.Controllers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Amatsucozy.PMS.Accounts.API.Controllers.Secured;

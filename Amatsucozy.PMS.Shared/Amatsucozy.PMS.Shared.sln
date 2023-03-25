@@ -5,6 +5,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amatsucozy.PMS.Shared.API", "Amatsucozy.PMS.Shared.API\Amatsucozy.PMS.Shared.API.csproj", "{1E689B77-03D8-41E1-9BFB-AD92DCA95E68}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{A9C32246-78DA-47FF-8A49-C4C595803371}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\Shared.API.Analyze.yml = ..\.github\workflows\Shared.API.Analyze.yml
+		..\.github\workflows\Shared.API.Pack.yml = ..\.github\workflows\Shared.API.Pack.yml
+		..\.github\workflows\Shared.Core.Analyze.yml = ..\.github\workflows\Shared.Core.Analyze.yml
+		..\.github\workflows\Shared.Core.Pack.yml = ..\.github\workflows\Shared.Core.Pack.yml
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{A64F82EE-BFB9-4DE1-A6D6-1E8DDD668329}"
 	ProjectSection(SolutionItems) = preProject
