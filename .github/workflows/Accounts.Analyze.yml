@@ -1,4 +1,4 @@
-name: Amatsucozy.PMS.Accounts.Analyze
+name: PMS.Accounts.Analyze
 
 on:
   workflow_dispatch:
