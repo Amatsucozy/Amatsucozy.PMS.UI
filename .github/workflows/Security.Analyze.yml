@@ -1,6 +1,7 @@
-name: SonarCloud
+name: Security.Analyze
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
