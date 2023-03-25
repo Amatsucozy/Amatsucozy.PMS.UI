@@ -1,4 +1,4 @@
-name: Amatsucozy.PMS.Shared.Core.Analyze
+name: PMS.Shared.Core.Analyze
 
 on:
   workflow_dispatch:
