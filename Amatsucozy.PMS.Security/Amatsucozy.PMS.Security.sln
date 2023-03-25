@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amatsucozy.PMS.Security.API", "Amatsucozy.PMS.Security.API\Amatsucozy.PMS.Security.API.csproj", "{23105633-6D46-43E7-B94D-4C1AFE95FF76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amatsucozy.PMS.Security.Core", "Amatsucozy.PMS.Security.Core\Amatsucozy.PMS.Security.Core.csproj", "{5D85FF7E-692C-43E0-929E-348F6B37C5BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Amatsucozy.PMS.Security.Infrastructure", "Amatsucozy.PMS.Security.Infrastructure\Amatsucozy.PMS.Security.Infrastructure.csproj", "{DECEEF98-EF31-4C80-AEE7-EC78A916BFDC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{C5B84952-D129-41ED-9E61-65A856D85AC2}"
+	ProjectSection(SolutionItems) = preProject
+		..\.github\workflows\Security.Analyze.yml = ..\.github\workflows\Security.Analyze.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{7BB6933F-372E-410C-BEC9-10B09D79CEFE}"
+	ProjectSection(SolutionItems) = preProject
+		..\nuget.config = ..\nuget.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23105633-6D46-43E7-B94D-4C1AFE95FF76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23105633-6D46-43E7-B94D-4C1AFE95FF76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23105633-6D46-43E7-B94D-4C1AFE95FF76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23105633-6D46-43E7-B94D-4C1AFE95FF76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D85FF7E-692C-43E0-929E-348F6B37C5BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D85FF7E-692C-43E0-929E-348F6B37C5BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D85FF7E-692C-43E0-929E-348F6B37C5BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D85FF7E-692C-43E0-929E-348F6B37C5BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DECEEF98-EF31-4C80-AEE7-EC78A916BFDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DECEEF98-EF31-4C80-AEE7-EC78A916BFDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DECEEF98-EF31-4C80-AEE7-EC78A916BFDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DECEEF98-EF31-4C80-AEE7-EC78A916BFDC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
