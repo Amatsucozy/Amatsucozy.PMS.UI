@@ -18,8 +18,10 @@ jobs:
         dotnet restore Amatsucozy.PMS.Shared/Amatsucozy.PMS.Shared.API/Amatsucozy.PMS.Shared.API.csproj
 
     - name: Pack
-      run: | 
-       dotnet pack Amatsucozy.PMS.Shared/Amatsucozy.PMS.Shared.API/Amatsucozy.PMS.Shared.API.csproj --no-restore -c Release
+      run: dotnet pack Amatsucozy.PMS.Shared/Amatsucozy.PMS.Shared.API/Amatsucozy.PMS.Shared.API.csproj --no-restore -c Release
+    
+    - name: Set API key
+      run: nuget setapikey ${{ secrets.NUGET_TOKEN }} -Source "github"
 
     - name: Push
       run: dotnet nuget push Amatsucozy.PMS.Shared/Amatsucozy.PMS.Shared.API/bin/Release/Amatsucozy.PMS.Shared.API.${env:NBGV_NuGetPackageVersion}.nupkg --source "github"
