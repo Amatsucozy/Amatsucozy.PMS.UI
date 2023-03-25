@@ -12,7 +12,12 @@ export class AuthHttpInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return this.oidcSecurityService.getAuthenticationResult()
       .pipe(
-        switchMap(({access_token, token_type}) => {
+        switchMap((authResult) => {
+          if (!authResult) {
+            return next.handle(request);
+          }
+
+          const {access_token, token_type} = authResult;
           const clonedRequest = request.clone({
             headers: access_token ? request.headers.set('Authorization', `${token_type} ${access_token}`) : request.headers
           });

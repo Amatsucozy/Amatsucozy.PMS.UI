@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AuthenticatedCallbackComponent} from "./pages/authenticated-callback/authenticated-callback.component";
-import {Guards} from "./auth/guards";
 import {AuthConfigModule} from "./auth/auth-config.module";
+import {AutoLoginPartialRoutesGuard} from "angular-auth-oidc-client";
 
 const routes: Routes = [
   {
@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: 'secured-views',
     loadChildren: () => import('./pages/secured-views/secured-views.module').then(m => m.SecuredViewsModule),
-    canActivate: [Guards.authenticated]
+    canActivate: [AutoLoginPartialRoutesGuard]
   },
   {
     path: 'accounts',
@@ -31,7 +31,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    AuthConfigModule,
     RouterModule.forRoot(routes)
   ],
   exports: [RouterModule]
