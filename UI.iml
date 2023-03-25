@@ -2,9 +2,9 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$/UI">
-      <excludeFolder url="file://$MODULE_DIR$/UI/dist" />
-      <excludeFolder url="file://$MODULE_DIR$/UI/tmp" />
+    <content url="file://$MODULE_DIR$/Amatsucozy.PMS.UI">
+      <excludeFolder url="file://$MODULE_DIR$/Amatsucozy.PMS.UI/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/Amatsucozy.PMS.UI/tmp" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

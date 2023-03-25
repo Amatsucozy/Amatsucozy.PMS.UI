@@ -1,4 +1,4 @@
-name: PMS.Security.Analyze
+name: PMS.Shared.API.Analyze
 
 on:
   workflow_dispatch:
@@ -6,11 +6,11 @@ on:
     branches:
       - main
     paths:
-      - Amatsucozy.PMS.Security/**
+      - Amatsucozy.PMS.Shared/Amatsucozy.PMS.Shared.API/**
   pull_request:
     types: [opened, synchronize, reopened]
     paths:
-      - Amatsucozy.PMS.Security/**
+      - Amatsucozy.PMS.Shared/Amatsucozy.PMS.Shared.API/**
 jobs:
   build:
     name: Build and analyze
@@ -45,6 +45,6 @@ jobs:
       - name: Build and analyze
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"Amatsucozy_PMS" /o:"amatsucozy" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          dotnet restore Amatsucozy.PMS.Security/Amatsucozy.PMS.Security.sln
-          dotnet build Amatsucozy.PMS.Security/Amatsucozy.PMS.Security.sln --no-restore -c Release
+          dotnet restore Amatsucozy.PMS.Shared/Amatsucozy.PMS.Shared.API/Amatsucozy.PMS.Shared.API.csproj
+          dotnet build Amatsucozy.PMS.Shared/Amatsucozy.PMS.Shared.API/Amatsucozy.PMS.Shared.API.csproj --no-restore -c Release
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
