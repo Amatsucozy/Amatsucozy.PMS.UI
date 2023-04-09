@@ -6,7 +6,7 @@ export const environment: IEnvironmentModel = {
   auth0Domain: 'amatsucozy.jp.auth0.com',
   auth0Audience: 'https://amatsucozy.jp.auth0.com/api/v2/',
   auth0ClientId: 'kSwwDgIjUBdveNzYYNFHPnu5EUS5PnFN',
-  auth0RedirectUri: 'http://localhost:4200/challenge',
+  auth0RedirectUri: 'https://localhost:4200/challenge',
 
   apis: {
     sts: 'https://localhost:60000/',
