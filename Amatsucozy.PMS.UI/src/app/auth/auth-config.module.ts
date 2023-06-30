@@ -20,7 +20,7 @@ import {AuthLocalStorageService} from "./auth-local-storage.service";
       ],
       silentRenew: true,
       silentRenewUrl: window.location.origin + '/silent-renew.html',
-      renewTimeBeforeTokenExpiresInSeconds: 10,
+      renewTimeBeforeTokenExpiresInSeconds: 10
     }
   })],
   exports: [AuthModule],

@@ -1,4 +1,4 @@
-<mat-sidenav-container>
+<mat-sidenav-container class="w-full h-full">
   <mat-sidenav>
 
   </mat-sidenav>
@@ -9,5 +9,51 @@
         <button mat-raised-button (click)="logout()">Log out</button>
       </section>
     </mat-toolbar>
+    <div class="flex flex-1 gap-16 px-16 py-8">
+      <div class="flex flex-col gap-4 flex-1">
+        <section class="flex flex-col">
+          <h1>Scopes</h1>
+          <p>Scopes are used to define what the token can access.</p>
+          <p>Choose token lifetime</p>
+          <mat-form-field appearance="outline">
+            <mat-label>Token lifetime in seconds</mat-label>
+            <input matInput placeholder="Token lifetime in seconds" required [(ngModel)]="tokenLifetime">
+          </mat-form-field>
+          <p>Select the scopes you want to request.</p>
+          <mat-checkbox *ngFor="let scope of availableScopes" (change)="toggleScope(scope)">{{scope}}</mat-checkbox>
+        </section>
+        <button mat-raised-button color="primary"
+                [disabled]="selectedScopes.isEmpty()"
+                (click)="requestScopes()">
+          Request token
+        </button>
+        <mat-form-field appearance="outline">
+          <mat-label>Token</mat-label>
+          <input matInput [(ngModel)]="token" readonly>
+        </mat-form-field>
+        <button mat-raised-button color="primary" [disabled]="!token" [cdkCopyToClipboard]="token">Copy</button>
+      </div>
+      <div class="flex flex-col gap-4 flex-1">
+        <section class="flex flex-col">
+          <h1>Call api with introspection token</h1>
+          <p>Use the token to call the api.</p>
+          <p>Choose endpoint</p>
+          <mat-form-field appearance="outline">
+            <mat-select [(ngModel)]="selectedEndpoint">
+              <mat-option *ngFor="let endpoint of availableEndpoints" [value]="endpoint">{{endpoint}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </section>
+        <button mat-raised-button color="primary"
+                [disabled]="!token"
+                (click)="callApi()">
+          Call API
+        </button>
+        <mat-form-field appearance="outline">
+          <mat-label>API response</mat-label>
+          <input matInput [(ngModel)]="apiResponse" readonly>
+        </mat-form-field>
+      </div>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
