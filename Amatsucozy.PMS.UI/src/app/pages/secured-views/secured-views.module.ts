@@ -12,25 +12,27 @@ import {MatInputModule} from "@angular/material/input";
 import {ClipboardModule} from "@angular/cdk/clipboard";
 import {FormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
+import {MatRadioModule} from "@angular/material/radio";
 
 
 @NgModule({
   declarations: [
     SecuredViewsComponent
   ],
-  imports: [
-    SecuredViewsRoutingModule,
-    CommonModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ClipboardModule,
-    FormsModule,
-    MatSelectModule
-  ],
+    imports: [
+        SecuredViewsRoutingModule,
+        CommonModule,
+        MatSidenavModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ClipboardModule,
+        FormsModule,
+        MatSelectModule,
+        MatRadioModule
+    ],
   providers: [
     AccountsService
   ]

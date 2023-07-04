@@ -43,6 +43,10 @@
               <mat-option *ngFor="let endpoint of availableEndpoints" [value]="endpoint">{{endpoint}}</mat-option>
             </mat-select>
           </mat-form-field>
+          <p>Choose scheme</p>
+          <mat-radio-group [(ngModel)]="selectedScheme">
+            <mat-radio-button *ngFor="let scheme of availableSchemes" [value]="scheme">{{scheme}}</mat-radio-button>
+          </mat-radio-group>
         </section>
         <button mat-raised-button color="primary"
                 [disabled]="!token"

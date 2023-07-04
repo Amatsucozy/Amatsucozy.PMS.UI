@@ -13,9 +13,11 @@ export class SecuredViewsComponent implements OnInit {
   readonly selectedScopes: SelectionModel<string>;
   availableScopes: string[];
   availableEndpoints: string[];
+  availableSchemes: string[];
   token: string;
   tokenLifetime: number;
   selectedEndpoint: string;
+  selectedScheme: string;
   apiResponse: string;
 
   constructor(
@@ -26,11 +28,16 @@ export class SecuredViewsComponent implements OnInit {
     this.tokenLifetime = 60;
     this.availableScopes = [];
     this.availableEndpoints = [
-      'https://localhost:60000/public/api/introspection/ping'
+      'https://localhost:60000/secured/api/introspection/ping'
     ];
     this.selectedScopes = new SelectionModel<string>(true, []);
-    this.selectedEndpoint = 'https://localhost:60000/public/api/introspection/ping';
+    this.selectedEndpoint = this.availableEndpoints[0];
     this.apiResponse = '';
+    this.availableSchemes = [
+      "Introspection",
+      "Introspection1"
+    ]
+    this.selectedScheme = this.availableSchemes[0];
   }
 
   ngOnInit(): void {
@@ -60,10 +67,10 @@ export class SecuredViewsComponent implements OnInit {
   }
 
   callApi() {
-    this.httpClient.get(this.selectedEndpoint, {
+    this.httpClient.get(`${this.selectedEndpoint}/${this.selectedScheme}`, {
       responseType: 'text',
       headers: {
-        'Authorization': `Introspection ${this.token}`
+        'Authorization': `${this.selectedScheme} ${this.token}`
       }
     })
       .subscribe({
