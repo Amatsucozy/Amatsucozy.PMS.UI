@@ -9,8 +9,8 @@ export const environment: IEnvironmentModel = {
   auth0RedirectUri: 'https://localhost:4200/challenge',
 
   apis: {
-    sts: 'https://localhost:60000/',
-    accounts: 'https://localhost:50000/',
-    pms: 'https://localhost:40000/'
+    sts: 'https://localhost:5443',
+    accounts: 'https://localhost:50000',
+    pms: 'https://localhost:40000'
   }
 };

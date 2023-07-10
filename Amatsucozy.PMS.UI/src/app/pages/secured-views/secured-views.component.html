@@ -50,8 +50,17 @@
         </section>
         <button mat-raised-button color="primary"
                 [disabled]="!token"
+                (click)="callIntrospectedApi()">
+          Call Introspected API
+        </button>
+        <button mat-raised-button color="primary"
+                [disabled]="!token"
                 (click)="callApi()">
           Call API
+        </button>
+        <button mat-raised-button color="primary"
+                (click)="refreshToken()">
+          Refresh token
         </button>
         <mat-form-field appearance="outline">
           <mat-label>API response</mat-label>

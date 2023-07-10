@@ -3,6 +3,7 @@ import {AccountsService} from "../../services/accounts.service";
 import {OidcSecurityService} from "angular-auth-oidc-client";
 import {SelectionModel} from "@angular/cdk/collections";
 import {HttpClient} from "@angular/common/http";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-secured-views',
@@ -28,7 +29,8 @@ export class SecuredViewsComponent implements OnInit {
     this.tokenLifetime = 60;
     this.availableScopes = [];
     this.availableEndpoints = [
-      'https://localhost:60000/secured/api/introspection/ping'
+      `${environment.apis.sts}/secured/api/introspection/ping`,
+      `${environment.apis.sts}/secured/api/token/forwarding`
     ];
     this.selectedScopes = new SelectionModel<string>(true, []);
     this.selectedEndpoint = this.availableEndpoints[0];
@@ -66,7 +68,7 @@ export class SecuredViewsComponent implements OnInit {
       });
   }
 
-  callApi() {
+  callIntrospectedApi() {
     this.httpClient.get(`${this.selectedEndpoint}/${this.selectedScheme}`, {
       responseType: 'text',
       headers: {
@@ -81,5 +83,26 @@ export class SecuredViewsComponent implements OnInit {
           this.apiResponse = e.message;
         }
       });
+  }
+
+  callApi() {
+    this.httpClient.get(`${this.selectedEndpoint}`, {
+      responseType: 'text',
+      headers: {
+        'Authorization': `Bearer ${this.token}`
+      }
+    })
+      .subscribe({
+        next: v => {
+          this.apiResponse = v;
+        },
+        error: e => {
+          this.apiResponse = e.message;
+        }
+      });
+  }
+
+  refreshToken() {
+    this.oidcSecurityService.forceRefreshSession().subscribe();
   }
 }

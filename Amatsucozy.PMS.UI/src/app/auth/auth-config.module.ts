@@ -7,16 +7,16 @@ import {AuthLocalStorageService} from "./auth-local-storage.service";
 @NgModule({
   imports: [AuthModule.forRoot({
     config: {
-      authority: 'https://localhost:60000',
+      authority: environment.apis.sts,
       redirectUrl: window.location.origin,
       postLogoutRedirectUri: window.location.origin,
-      clientId: 'pms-ui',
-      scope: 'openid profile sts accounts pms', // 'openid profile ' + your scopes
+      clientId: 'ui.client',
+      scope: 'openid profile auth badges', // 'openid profile ' + your scopes
       responseType: 'code',
       secureRoutes: [
-        `${environment.apis.sts}${Constants.routeTypes.secured}/`,
-        `${environment.apis.accounts}${Constants.routeTypes.secured}/`,
-        `${environment.apis.pms}${Constants.routeTypes.secured}/`
+        `${environment.apis.sts}/${Constants.routeTypes.secured}/`,
+        `${environment.apis.accounts}/${Constants.routeTypes.secured}/`,
+        `${environment.apis.pms}/${Constants.routeTypes.secured}/`
       ],
       silentRenew: true,
       silentRenewUrl: window.location.origin + '/silent-renew.html',
